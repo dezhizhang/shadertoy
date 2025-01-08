@@ -5,21 +5,11 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-07 23:28:13
  * :last editor: 张德志
- * :date last edited: 2025-01-08 09:29:12
+ * :date last edited: 2025-01-08 09:35:54
  */
-/*
- * :file description:
- * :name: /digit/config/config.ts
- * :author: 张德志
- * :copyright: (c) 2024, Tungee
- * :date created: 2024-03-26 09:49:54
- * :last editor: 张德志
- * :date last edited: 2024-10-17 17:39:50
- */
-import fs from 'fs';
 import path from 'path';
 import { defineConfig } from 'umi';
-// import { OSS_CONFIG } from  './oss';
+import { OSS_CONFIG } from  './oss';
 import routes from './routes';
 
 const { REACT_APP_ENV } = process.env;
@@ -32,7 +22,7 @@ const VERSION = `v${PKG.version}`;
 
 // 静态文件路径前缀
 const VER_PATH =
-  REACT_APP_ENV === 'prod' ? `https://cdn.xiaozhi.shop/${PKG.name}/` : `/`; // 获取编译环境配置
+  REACT_APP_ENV === 'prod' ? `https://cdn.shuqin.cc/${PKG.name}/` : `/`; // 获取编译环境配置
 
 const publicPath = isProduction ? VER_PATH : `/`;
 
@@ -73,14 +63,14 @@ export default defineConfig({
       },
     ]);
 
-    // memo.plugin('WebpackAliyunOssPlugin').use(WebpackAliyunOssPlugin, [
-    //   {
-    //     ...OSS_CONFIG,
-    //     filter: function (build:any) {
-    //       return !/\.html$/.test(build);
-    //     },
-    //   },
-    // ]);
+    memo.plugin('WebpackAliyunOssPlugin').use(WebpackAliyunOssPlugin, [
+      {
+        ...OSS_CONFIG,
+        filter: function (build:any) {
+          return !/\.html$/.test(build);
+        },
+      },
+    ]);
   
     memo.module
       .rule('images')
@@ -205,7 +195,7 @@ export default defineConfig({
     type: 'none',
   },
   extraBabelPlugins: [
-    // 生产环境移除console
-    isProduction && REACT_APP_ENV === 'prod' ? 'transform-remove-console' : '',
+    // // 生产环境移除console
+    // isProduction && REACT_APP_ENV === 'prod' ? 'transform-remove-console' : '',
   ],
 });

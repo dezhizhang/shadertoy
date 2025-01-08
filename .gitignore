@@ -9,6 +9,8 @@
 
 # production
 /dist
+/build
+/config/oss.ts
 
 # misc
 .DS_Store
