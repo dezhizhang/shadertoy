@@ -5,7 +5,7 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-07 23:28:56
  * :last editor: 张德志
- * :date last edited: 2025-01-09 19:21:38
+ * :date last edited: 2025-01-11 11:41:47
  */
 export default [
   {
@@ -27,6 +27,10 @@ export default [
       {
         path:'/xccbrx',
         component:'@/pages/xccbrx'
+      },
+      {
+        path:'/wldsrn',
+        component:'@/pages/wldsrn'
       }
     ],
   },

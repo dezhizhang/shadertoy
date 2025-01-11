@@ -5,7 +5,7 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-09 19:13:23
  * :last editor: 张德志
- * :date last edited: 2025-01-09 19:22:15
+ * :date last edited: 2025-01-11 11:39:14
  */
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
@@ -14,8 +14,6 @@ const Xccbrx: React.FC = () => {
   const dom = useRef<any>();
 
   useEffect(() => {
-
-
     // Vertex Shader
     const vertexShader = `
     varying vec2 vUv;
@@ -24,7 +22,7 @@ const Xccbrx: React.FC = () => {
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
     `;
-    
+
     // Fragment Shader
     const fragmentShader = `
     uniform vec2 iResolution;
@@ -73,49 +71,49 @@ const Xccbrx: React.FC = () => {
         gl_FragColor = effect_2(uv);
     }
     `;
-    
+
     // Uniforms setup
     const uniforms = {
-        iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-        iTime: { value: 0 },
+      iResolution: {
+        value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+      },
+      iTime: { value: 0 },
     };
-    
+
     // Shader Material
     const material = new THREE.ShaderMaterial({
-        vertexShader,
-        fragmentShader,
-        uniforms,
+      vertexShader,
+      fragmentShader,
+      uniforms,
     });
-    
+
     // Create a plane to apply the shader
     const geometry = new THREE.PlaneGeometry(2, 2);
     const mesh = new THREE.Mesh(geometry, material);
-    
+
     // Add the mesh to the scene
     const scene = new THREE.Scene();
     scene.add(mesh);
-    
+
     // Camera setup
     const camera = new THREE.Camera();
-    
+
     // Renderer setup
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-    
+
     // Animation loop
     function animate() {
-        uniforms.iTime.value += 0.05; // Update time
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
+      uniforms.iTime.value += 0.05; // Update time
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
     }
-    
+
     animate();
-    
   }, []);
 
   return <div ref={dom} />;
 };
-
 
 export default Xccbrx;

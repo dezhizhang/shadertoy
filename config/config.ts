@@ -5,7 +5,7 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-07 23:28:13
  * :last editor: 张德志
- * :date last edited: 2025-01-09 19:18:22
+ * :date last edited: 2025-01-11 11:33:55
  */
 import path from 'path';
 import { defineConfig } from 'umi';
