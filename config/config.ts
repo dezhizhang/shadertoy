@@ -5,7 +5,7 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-07 23:28:13
  * :last editor: 张德志
- * :date last edited: 2025-01-11 11:33:55
+ * :date last edited: 2025-01-13 23:07:18
  */
 import path from 'path';
 import { defineConfig } from 'umi';
@@ -63,14 +63,14 @@ export default defineConfig({
       },
     ]);
 
-    // memo.plugin('WebpackAliyunOssPlugin').use(WebpackAliyunOssPlugin, [
-    //   {
-    //     ...OSS_CONFIG,
-    //     filter: function (build:any) {
-    //       return !/\.html$/.test(build);
-    //     },
-    //   },
-    // ]);
+    memo.plugin('WebpackAliyunOssPlugin').use(WebpackAliyunOssPlugin, [
+      {
+        ...OSS_CONFIG,
+        filter: function (build:any) {
+          return !/\.html$/.test(build);
+        },
+      },
+    ]);
   
     memo.module
       .rule('images')
