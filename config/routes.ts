@@ -5,7 +5,7 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-07 23:28:56
  * :last editor: 张德志
- * :date last edited: 2025-01-13 23:03:37
+ * :date last edited: 2025-01-16 05:44:38
  */
 export default [
   {
@@ -35,6 +35,10 @@ export default [
       {
         path:'/lscczl',
         component:'@/pages/lscczl'
+      },
+      {
+        path:'/xsfgrn',
+        component:'@/pages/xsfgrn'
       }
     ],
   },
