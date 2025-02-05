@@ -1,5 +1,5 @@
 /*
- * :file description: 
+ * :file description:
  * :name: /shadertoy/config/config.ts
  * :author:张德志
  * :copyright: (c) 2025, Xiaozhi
@@ -62,16 +62,18 @@ export default defineConfig({
         ignoreOrder: true,
       },
     ]);
-
-    memo.plugin('WebpackAliyunOssPlugin').use(WebpackAliyunOssPlugin, [
-      {
-        ...OSS_CONFIG,
-        filter: function (build:any) {
-          return !/\.html$/.test(build);
+    if(isProduction) {
+      memo.plugin('WebpackAliyunOssPlugin').use(WebpackAliyunOssPlugin, [
+        {
+          ...OSS_CONFIG,
+          filter: function (build:any) {
+            return !/\.html$/.test(build);
+          },
         },
-      },
-    ]);
-  
+      ]);
+    }
+
+
     memo.module
       .rule('images')
       .test(/\.(png|jpe?g|gif|webp|ico)(\?.*)?$/)
@@ -163,7 +165,7 @@ export default defineConfig({
         ],
       });
   },
-  
+
 
   targets: {
     ie: 11,
