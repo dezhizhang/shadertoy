@@ -5,7 +5,7 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-07 23:28:56
  * :last editor: 张德志
- * :date last edited: 2025-01-17 07:00:08
+ * :date last edited: 2025-02-05 17:58:08
  */
 export default [
   {
@@ -43,6 +43,10 @@ export default [
       {
         path:'/4dl3zn',
         component:'@/pages/4dl3zn'
+      },
+      {
+        path:'',
+        component:"@/pages/tsjszh"
       }
     ],
   },
