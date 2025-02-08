@@ -5,7 +5,7 @@
  * :copyright: (c) 2025, Xiaozhi
  * :date created: 2025-01-07 23:28:56
  * :last editor: 张德志
- * :date last edited: 2025-02-07 19:47:31
+ * :date last edited: 2025-02-08 21:28:22
  */
 export default [
   {
@@ -14,7 +14,7 @@ export default [
     routes: [
       {
         path: '/',
-        redirect: '/mdX3zr',
+        component:'@/pages/home'
       },
       {
         path: '/cine-shader',
