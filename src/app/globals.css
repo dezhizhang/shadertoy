@@ -3,21 +3,64 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0a0a0c;
+  --bone: #f4f4ee;
+  --acid: #d6ff3a;
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1, 0 0 0 0 1, 0 0 0 0 1, 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: 220px 220px;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.grid-etch {
+  background-image: linear-gradient(rgba(244, 244, 238, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 244, 238, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center center;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+.under-reveal {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .under-reveal {
+  background-size: 100% 1px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a30;
+  border: 2px solid #0a0a0c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a42;
 }
 
 @layer utilities {
